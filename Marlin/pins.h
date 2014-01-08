@@ -1471,7 +1471,7 @@
 #define TEMP_2_PIN         -1
 
 #define SDPOWER            -1
-#define SDSS                8
+#define SDSS               26 //QU-BD_Ups SD Chip Select
 #define LED_PIN            -1
 #define PS_ON_PIN          -1
 #define KILL_PIN           -1
