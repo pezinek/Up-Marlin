@@ -1,7 +1,16 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-// JJW - QU-BD One Up and Two Up printer changes commente dwith "//QU-BD_Ups"
+// QU-BD One Up and Two Up Product Selection (uncomment the line that matches your printer model)
+//#define QUBD_MODEL 1 // for One-Up printers
+#define QUBD_MODEL 2 // for Two-Up printers
+
+
+// QU-BD One Up and Two Up Bed Autoleveling support (using E-Stop for servo)
+// uncomment the following line (remove the two forward-slash characters) to enable Bed Autoleveling features
+//#define FEATURE_AUTOLEVEL
+
+
 
 // This configuration file contains the basic settings.
 // Advanced settings can be found in Configuration_adv.h
@@ -309,32 +318,47 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define max_software_endstops true  // If true, axis won't move to coordinates greater than the defined lengths below.
 
 // Travel limits after homing
-#define X_MAX_POS 185 //QU-BD_Ups
 #define X_MIN_POS 0
-#define Y_MAX_POS 185 //QU-BD_Ups
 #define Y_MIN_POS 0
-#define Z_MAX_POS 125 //QU-BD_Ups
 #define Z_MIN_POS 0
+
+#define X_MAX_POS 200
+#define Y_MAX_POS 200
+#define Z_MAX_POS 125
+
+#if (QUBD_MODEL==1)
+#define X_MAX_POS 100 //QU-BD One-Up
+#define Y_MAX_POS 100 //QU-BD One-Up
+#define Z_MAX_POS 125 //QU-BD One-Up
+#endif
+
+#if (QUBD_MODEL==2)
+#define X_MAX_POS 175 //QU-BD Two-Up
+#define Y_MAX_POS 175 //QU-BD Two-Up
+#define Z_MAX_POS 125 //QU-BD Two-Up
+#endif
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
 #define Y_MAX_LENGTH (Y_MAX_POS - Y_MIN_POS)
 #define Z_MAX_LENGTH (Z_MAX_POS - Z_MIN_POS)
 //============================= Bed Auto Leveling ===========================
 
-//#define ENABLE_AUTO_BED_LEVELING // Delete the comment to enable (remove // at the start of the line)
+#ifdef FEATURE_AUTOLEVEL
+#define ENABLE_AUTO_BED_LEVELING
+#endif
 
 #ifdef ENABLE_AUTO_BED_LEVELING
 
   // these are the positions on the bed to do the probing
-  #define LEFT_PROBE_BED_POSITION 15
-  #define RIGHT_PROBE_BED_POSITION 170
-  #define BACK_PROBE_BED_POSITION 180
-  #define FRONT_PROBE_BED_POSITION 20
+  #define LEFT_PROBE_BED_POSITION (X_MIN_POS + 15)
+  #define RIGHT_PROBE_BED_POSITION (X_MAX_POS - 15)
+  #define BACK_PROBE_BED_POSITION (Y_MAX_POS - 20)
+  #define FRONT_PROBE_BED_POSITION (Y_MIN_POS + 20)
 
   // these are the offsets to the prob relative to the extruder tip (Hotend - Probe)
-  #define X_PROBE_OFFSET_FROM_EXTRUDER -25
-  #define Y_PROBE_OFFSET_FROM_EXTRUDER -29
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER -12.35
+  #define X_PROBE_OFFSET_FROM_EXTRUDER 5
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER -36
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER -18
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
@@ -634,16 +658,21 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 // set it manually if you have more servos than extruders and wish to manually control some
 // leaving it undefined or defining as 0 will disable the servo subsystem
 // If unsure, leave commented / disabled
-//
-//#define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
+
+#ifdef FEATURE_AUTOLEVEL
+#define NUM_SERVOS 3 // Servo index starts with 0 for M280 command
+#endif
 
 // Servo Endstops
 //
 // This allows for servo actuated endstops, primary usage is for the Z Axis to eliminate calibration or bed height changes.
 // Use M206 command to correct for switch height offset to actual nozzle height. Store that setting with M500.
-//
-//#define SERVO_ENDSTOPS {-1, -1, 0} // Servo index for X, Y, Z. Disable with -1
-//#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 70,0} // X,Y,Z Axis Extend and Retract angles
+
+#ifdef FEATURE_AUTOLEVEL
+#define SERVO_ENDSTOPS {-1, -1, 0} // Servo index for X, Y, Z. Disable with -1
+#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 70,0} // X,Y,Z Axis Extend and Retract angles
+#define SERVO2_PIN 37 // servo used for deploying the Z probe (this is the "E-Stop" connector on Printrboard Rev D)
+#endif
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
