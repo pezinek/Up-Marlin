@@ -32,6 +32,13 @@
 #elif MOTHERBOARD == 77
 	#define MACHINE_NAME "3Drag"
 	#define FIRMWARE_URL "http://3dprint.elettronicain.it/"
+#elif MOTHERBOARD == 81 && defined(QUBD_MODEL)
+	#define FIRMWARE_URL "https://github.com/QU-BD/Up-Marlin"
+	#if QUBD_MODEL == 1
+		#define MACHINE_NAME "QUBD One-Up/Printrboard"
+	#else
+		#define MACHINE_NAME "QUBD Two-Up/Printrboard"
+	#endif
 #else
 	#ifdef CUSTOM_MENDEL_NAME
 		#define MACHINE_NAME CUSTOM_MENDEL_NAME
