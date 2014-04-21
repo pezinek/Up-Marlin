@@ -23,7 +23,7 @@
 
 #define PROTOCOL_VERSION "1.0"
 
-#define UPMARLIN_VERSION "1.0"
+#define UPMARLIN_VERSION "1.1"
 
 #if MOTHERBOARD == 7 || MOTHERBOARD == 71
 	#define MACHINE_NAME "Ultimaker"
@@ -37,9 +37,9 @@
 #elif MOTHERBOARD == 81 && defined(QUBD_MODEL)
 	#define FIRMWARE_URL "https://github.com/QU-BD/Up-Marlin"
 	#if QUBD_MODEL == 1
-		#define MACHINE_NAME "QUBD One-Up/Printrboard"
+		#define MACHINE_NAME "QUBD One-Up"
 	#else
-		#define MACHINE_NAME "QUBD Two-Up/Printrboard"
+		#define MACHINE_NAME "QUBD Two-Up"
 	#endif
 #else
 	#ifdef CUSTOM_MENDEL_NAME

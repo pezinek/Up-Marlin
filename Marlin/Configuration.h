@@ -11,6 +11,11 @@
 //#define FEATURE_AUTOLEVEL
 
 
+// QU-BD One Up and Two Up support for Panelolu2 display (note: you also need to install the LiquidTWI2
+// library from here: https://github.com/lincomatic/LiquidTWI2)
+// uncomment the following line to enable
+//#define LCD_I2C_PANELOLU2
+
 
 // This configuration file contains the basic settings.
 // Advanced settings can be found in Configuration_adv.h
