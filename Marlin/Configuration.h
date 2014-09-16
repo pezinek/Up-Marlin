@@ -5,6 +5,11 @@
 //#define QUBD_MODEL 1 // for One-Up printers
 #define QUBD_MODEL 2 // for Two-Up printers
 
+// QU-BD One/Two Up Printrboard selection.
+// Black/1 is original board that shipped with early models.
+// Red/2 is the board shipped with the later models.
+//#define QUBD_PRINTRBOARD 1 // for Original Black board
+#define QUBD_PRINTRBOARD 2 // for New Red board
 
 // QU-BD One Up and Two Up Bed Autoleveling support (using E-Stop for servo)
 // uncomment the following line (remove the two forward-slash characters) to enable Bed Autoleveling features
@@ -312,6 +317,26 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define INVERT_E0_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E2_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
+
+// Black Printrboard
+#if (QUBD_PRINTRBOARD==1)
+#define INVERT_X_DIR true
+#define INVERT_Y_DIR true
+#define INVERT_Z_DIR true
+#define INVERT_E0_DIR false
+#define INVERT_E1_DIR false
+#define INVERT_E2_DIR false
+#endif
+
+// Red Printrboard
+#if (QUBD_PRINTRBOARD==2)
+#define INVERT_X_DIR false
+#define INVERT_Y_DIR false
+#define INVERT_Z_DIR false
+#define INVERT_E0_DIR true
+#define INVERT_E1_DIR true
+#define INVERT_E2_DIR true
+#endif
 
 // ENDSTOP SETTINGS:
 // Sets direction of endstops when homing; 1=MAX, -1=MIN
