@@ -1,4 +1,4 @@
-﻿#ifndef LANGUAGE_H
+#ifndef LANGUAGE_H
 #define LANGUAGE_H
 
 // NOTE: IF YOU CHANGE THIS FILE / MERGE THIS FILE WITH CHANGES
@@ -23,7 +23,7 @@
 
 #define PROTOCOL_VERSION "1.0"
 
-#define UPMARLIN_VERSION "1.2"
+#define UPMARLIN_VERSION "1.1"
 
 #if MOTHERBOARD == 7 || MOTHERBOARD == 71
 	#define MACHINE_NAME "Ultimaker"
