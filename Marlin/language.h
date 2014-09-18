@@ -23,7 +23,7 @@
 
 #define PROTOCOL_VERSION "1.0"
 
-#define UPMARLIN_VERSION "1.1"
+#define UPMARLIN_VERSION "1.2"
 
 #if MOTHERBOARD == 7 || MOTHERBOARD == 71
 	#define MACHINE_NAME "Ultimaker"
