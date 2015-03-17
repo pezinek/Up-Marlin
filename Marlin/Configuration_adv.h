@@ -63,8 +63,8 @@
 //and turn off after the set amount of seconds from last driver being disabled again
 #define CONTROLLERFAN_PIN -1 //Pin used for the fan to cool controller (-1 to disable)
 #define CONTROLLERFAN_SECS 60 //How many seconds, after all motors were disabled, the fan should run
-#define CONTROLLERFAN_ON 255  //Value for switching controller fan ON (0 for active low, 1-255 for active high switching)
-#define CONTROLLERFAN_OFF 0  //Value for switching controller fan OFF (1-255 for active low, 0 for active high switching)
+#define CONTROLLERFAN_ON 255  //Value for switching controller fan ON (0 for active low, 255 for active high switching)
+#define CONTROLLERFAN_OFF 0  //Value for switching controller fan OFF (255 for active low, 0 for active high switching)
 
 // When first starting the main fan, run it at full speed for the
 // given number of milliseconds.  This gets the fan spinning reliably
