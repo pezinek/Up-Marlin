@@ -3208,14 +3208,14 @@ void controllerFan()
 
     if ((millis() - lastMotor) >= (CONTROLLERFAN_SECS*1000UL) || lastMotor == 0) //If the last time any driver was enabled, is longer since than CONTROLLERSEC...
     {
-        digitalWrite(CONTROLLERFAN_PIN, 0);
-        analogWrite(CONTROLLERFAN_PIN, 0);
+        digitalWrite(CONTROLLERFAN_PIN, CONTROLLERFAN_OFF);
+        analogWrite(CONTROLLERFAN_PIN, CONTROLLERFAN_OFF);
     }
     else
     {
         // allows digital or PWM fan output to be used (see M42 handling)
-        digitalWrite(CONTROLLERFAN_PIN, CONTROLLERFAN_SPEED);
-        analogWrite(CONTROLLERFAN_PIN, CONTROLLERFAN_SPEED);
+        digitalWrite(CONTROLLERFAN_PIN, CONTROLLERFAN_ON);
+        analogWrite(CONTROLLERFAN_PIN, CONTROLLERFAN_ON);
     }
   }
 }
