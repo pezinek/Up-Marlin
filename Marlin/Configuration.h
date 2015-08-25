@@ -2,8 +2,8 @@
 #define CONFIGURATION_H
 
 // QU-BD One Up and Two Up Product Selection (uncomment the line that matches your printer model)
-//#define QUBD_MODEL 1 // for One-Up printers
-#define QUBD_MODEL 2 // for Two-Up printers
+#define QUBD_MODEL 1 // for One-Up printers
+//#define QUBD_MODEL 2 // for Two-Up printers
 
 // QU-BD One/Two Up Printrboard selection.
 // Black/1 is original board that shipped with early models.
@@ -285,9 +285,9 @@
 #endif
 
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
-const bool X_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
-const bool Y_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
-const bool Z_MIN_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
+const bool X_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
+const bool Y_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
+const bool Z_MIN_ENDSTOP_INVERTING = false; // set to true to invert the logic of the endstop.
 const bool X_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
 const bool Y_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
 const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of the endstop.
@@ -357,9 +357,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 #define Z_MAX_POS 125
 
 #if (QUBD_MODEL==1)
-#define X_MAX_POS 100 //QU-BD One-Up
-#define Y_MAX_POS 100 //QU-BD One-Up
-#define Z_MAX_POS 125 //QU-BD One-Up
+#define X_MAX_POS 97 //QU-BD One-Up
+#define Y_MAX_POS 99 //QU-BD One-Up
+#define Z_MAX_POS 102 //QU-BD One-Up
 #endif
 
 #if (QUBD_MODEL==2)
@@ -452,7 +452,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {88.88888888889,88.88888888889,1511.811023622047,88.57326053533955} //QU-BD_Ups // default steps per unit for Ultimaker
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {88.88888888889,88.88888888889,1511.811023622047,88.57326053533955} //QU-BD_Ups // default steps per unit for Ultimaker
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {89.3607,88.83,1518.3181011986126,91.163} //QU-BD_Ups // default steps per unit for Ultimaker
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 45}  //QU-BD_Ups  // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {5000,5000,100,10000}  //QU-BD_Ups  // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
